@@ -24,19 +24,6 @@ public class Exercise4 {
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
         System.out.println("Элементы чётных строк:");
 
         for (int i = 1; i < m; i += 2) {
