@@ -13,7 +13,6 @@ public class Exercise5 {
         while (choice != 4) {
 
             printMenu();
-
             choice = scanner.nextInt();
 
             switch (choice) {
@@ -43,8 +42,17 @@ public class Exercise5 {
 
     static int[] inputData() {
 
-        System.out.print("Введите количество чисел: ");
-        int n = scanner.nextInt();
+        int n;
+
+        do {
+            System.out.print("Введите количество чисел: ");
+            n = scanner.nextInt();
+
+            if (!checkData(n)) {
+                System.out.println("Количество чисел должно быть больше 0");
+            }
+
+        } while (!checkData(n));
 
         int[] arr = new int[n];
 
@@ -55,6 +63,10 @@ public class Exercise5 {
         }
 
         return arr;
+    }
+
+    static boolean checkData(int n) {
+        return n > 0;
     }
 
     static double[] calculate(int[] arr) {
