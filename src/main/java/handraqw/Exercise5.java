@@ -14,85 +14,47 @@ public class Exercise5 {
 
             printMenu();
 
-            if (scanner.hasNextInt()) {
-                choice = scanner.nextInt();
+            choice = scanner.nextInt();
 
-                if (choice == 1) {
-
+            switch (choice) {
+                case 1:
                     int[] arr = inputData();
+                    double[] result = calculate(arr);
+                    printResult(result);
+                    break;
 
-                    if (checkData(arr)) {
-                        double[] result = calculate(arr);
-                        printResult(result);
-                    }
-
-                } else if (choice == 2) {
+                case 2:
                     printInfo();
+                    break;
 
-                } else if (choice == 3) {
+                case 3:
                     printDeveloper();
+                    break;
 
-                } else if (choice == 4) {
+                case 4:
                     System.out.println("Выход из программы");
+                    break;
 
-                } else {
+                default:
                     System.out.println("Неверный пункт меню");
-                }
-
-            } else {
-                System.out.println("Введите целое число");
-                scanner.next();
             }
         }
     }
 
     static int[] inputData() {
 
-        int n;
-
-        while (true) {
-            System.out.print("Введите количество чисел: ");
-
-            if (scanner.hasNextInt()) {
-                n = scanner.nextInt();
-
-                if (n > 0) {
-                    break;
-                }
-
-                System.out.println("Количество должно быть больше нуля.");
-
-            } else {
-                System.out.println("Введите целое число.");
-                scanner.next();
-            }
-        }
+        System.out.print("Введите количество чисел: ");
+        int n = scanner.nextInt();
 
         int[] arr = new int[n];
 
         System.out.println("Введите элементы массива:");
 
         for (int i = 0; i < n; i++) {
-
-            while (!scanner.hasNextInt()) {
-                System.out.println("Ошибка! Введите целое число.");
-                scanner.next();
-            }
-
             arr[i] = scanner.nextInt();
         }
 
         return arr;
-    }
-
-    static boolean checkData(int[] arr) {
-
-        if (arr == null || arr.length == 0) {
-            System.out.println("Массив пуст.");
-            return false;
-        }
-
-        return true;
     }
 
     static double[] calculate(int[] arr) {
@@ -124,11 +86,10 @@ public class Exercise5 {
     static void printResult(double[] result) {
 
         System.out.println("\nРезультаты:");
-
-        System.out.printf("Минимальное число: %.0f%n", result[0]);
-        System.out.printf("Максимальное число: %.0f%n", result[1]);
-        System.out.printf("Сумма: %.0f%n", result[2]);
-        System.out.printf("Среднее арифметическое: %.2f%n", result[3]);
+        System.out.println("Минимальное число: " + (int) result[0]);
+        System.out.println("Максимальное число: " + (int) result[1]);
+        System.out.println("Сумма: " + (int) result[2]);
+        System.out.println("Среднее арифметическое: " + result[3]);
     }
 
     static void printMenu() {
